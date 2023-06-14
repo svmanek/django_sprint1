@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+  Остров отчаянья. 25 октября 1659 года
+{% endblock %}
+{% block content %}
+  <div class="container py-5">
+    <article>
+      <ul>
+        <li>
+          Место: {{ posts_detail.location }}              
+        </li>
+        <li>
+          Дата: {{ posts_detail.date }}
+        </li>
+        <li>
+          Категория: <a href="{% url 'category_posts' posts_detail.category %}">{{ posts_detail.category }}</a>
+        </li>
+      </ul>         
+      <p>
+        {{ posts_detail.text}}
+      </p>          
+    </article>                
+  </div>
+{% endblock %}
+
+
