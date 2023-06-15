@@ -7,20 +7,18 @@
     <article>
       <ul>
         <li>
-          Место: {{ posts_detail.location }}              
+          Место: {{ post.location }}              
         </li>
         <li>
-          Дата: {{ posts_detail.date }}
+          Дата: {{ post.date }}
         </li>
         <li>
-          Категория: <a href="{% url 'category_posts' posts_detail.category %}">{{ posts_detail.category }}</a>
+          Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
         </li>
       </ul>         
       <p>
-        {{ posts_detail.text}}
+        {{ post.text}}
       </p>          
     </article>                
   </div>
 {% endblock %}
-
-
