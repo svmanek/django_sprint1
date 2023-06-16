@@ -10,9 +10,9 @@ def test_blog_urls():
             'При импорте списка маршрутов `urlpatterns` из файла '
             f'`blog/urls.py` произошла ошибка: {e}'
         ) from e
-    assert isinstance(solution_urlpatterns, list), (
-        'Убедитесь, что значение переменной `urlpatterns` - это список.'
-    )
+    assert isinstance(
+        solution_urlpatterns, list
+    ), 'Убедитесь, что значение переменной `urlpatterns` - это список.'
     assert len(solution_urlpatterns) >= 3, (
         'Убедитесь, что все необходимые маршруты добавлены в список '
         '`urlpatterns` в файле `blog/urls.py`.'
@@ -70,11 +70,13 @@ def test_pages_appname():
     )
 
 
-@pytest.mark.parametrize('value, name', [
-    ('', 'blog:index'),
-    ('0', 'blog:post_detail'),
-    ('category_slug', 'blog:category_posts')
-]
+@pytest.mark.parametrize(
+    'value, name',
+    [
+        ('', 'blog:index'),
+        ('0', 'blog:post_detail'),
+        ('category_slug', 'blog:category_posts'),
+    ],
 )
 def test_blog_url_names(value, name):
     args = (value,)
@@ -108,6 +110,5 @@ def test_pages_url_names(name):
         ) from e
     except Exception as e:
         raise AssertionError(
-            f'При поиске пути по имени `{name}` '
-            f'возникла ошибка: {e}'
+            f'При поиске пути по имени `{name}` ' f'возникла ошибка: {e}'
         ) from e

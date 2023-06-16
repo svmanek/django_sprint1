@@ -7,8 +7,7 @@ from django.template import TemplateDoesNotExist
 
 @pytest.fixture()
 def urlpatterns(imports_by_full_name):
-    urlpattern_paths = [
-        'pages.urls.urlpatterns', 'blog.urls.urlpatterns']
+    urlpattern_paths = ['pages.urls.urlpatterns', 'blog.urls.urlpatterns']
     urlpattern_vals = [imports_by_full_name[p] for p in urlpattern_paths]
     expected_names = [
         ('about', 'rules'),
@@ -16,11 +15,15 @@ def urlpatterns(imports_by_full_name):
     ]
     expected_views = [
         ('pages.views.about', 'pages.views.rules'),
-        ('blog.views.index', 'blog.views.post_detail',
-         'blog.views.category_posts'),
+        (
+            'blog.views.index',
+            'blog.views.post_detail',
+            'blog.views.category_posts',
+        ),
     ]
     return zip(
-        urlpattern_paths, urlpattern_vals, expected_names, expected_views)
+        urlpattern_paths, urlpattern_vals, expected_names, expected_views
+    )
 
 
 @pytest.fixture()

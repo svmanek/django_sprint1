@@ -4,10 +4,12 @@ from tests.conftest import try_get_url
 
 
 @pytest.mark.parametrize(
-    'url, slug', [
+    'url, slug',
+    [
         ('/category/category_slug/', 'category_slug'),
         ('/category/another_slug/', 'another_slug'),
-    ])
+    ],
+)
 def test_category_page_contents(client, url, slug):
     response = try_get_url(client, url)
     msg_slug = '<slug>'

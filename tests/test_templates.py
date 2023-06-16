@@ -7,7 +7,8 @@ from tests.conftest import try_get_url
 
 
 @pytest.mark.parametrize(
-    'url, template', [
+    'url, template',
+    [
         ('', 'blog/index.html'),
         ('posts/0/', 'blog/detail.html'),
         ('posts/1/', 'blog/detail.html'),
@@ -15,15 +16,19 @@ from tests.conftest import try_get_url
         ('category/category_slug/', 'blog/category.html'),
         ('pages/about/', 'pages/about.html'),
         ('pages/rules/', 'pages/rules.html'),
-    ]
+    ],
 )
 def test_page_templates(client, url, template):
     url = f'/{url}' if url else '/'
     response = try_get_url(client, url)
-    assertTemplateUsed(response, template, msg_prefix=(
-        f'Убедитесь, что для отображения страницы `{url}` используется '
-        f'шаблон `{template}`.'
-    ))
+    assertTemplateUsed(
+        response,
+        template,
+        msg_prefix=(
+            f'Убедитесь, что для отображения страницы `{url}` используется '
+            f'шаблон `{template}`.'
+        ),
+    )
 
 
 @pytest.mark.parametrize('post_id', (0, 1, 2))

@@ -6,7 +6,8 @@ def test_django_version():
     used_ver = get_version()
     assert used_ver >= min_ver, (
         f'В проекте должна быть установлена версия Django '
-        f'не менее {min_ver}. У вас Django версии {used_ver}')
+        f'не менее {min_ver}. У вас Django версии {used_ver}'
+    )
 
 
 def test_static_dir(settings_app_name, project_dirname):
@@ -27,7 +28,9 @@ def test_static_dir(settings_app_name, project_dirname):
 def test_apps_registered(settings_app_name, project_dirname):
     register_apps_old_style = ['blog', 'pages']
     register_apps_new_style = [
-        'blog.apps.BlogConfig', 'pages.apps.PagesConfig']
+        'blog.apps.BlogConfig',
+        'pages.apps.PagesConfig',
+    ]
     settings_app = __import__(f'{settings_app_name}')
     installed_apps = settings_app.settings.INSTALLED_APPS
     registered = set(installed_apps)
