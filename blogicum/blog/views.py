@@ -46,7 +46,7 @@ posts = [
 
 def index(request):
     template = 'blog/index.html'
-    context = {'posts': posts.__reversed__()}
+    context = {'posts': reversed(posts)}
     return render(request, template, context)
 
 
@@ -58,7 +58,5 @@ def post_detail(request, post_pk):
 
 def category_posts(request, category_slug):
     template = 'blog/category.html'
-    # Нужно отфильтровать посты по категории и вывести их на страницу.
-    # Не совсем понимаю как это сделать? И в задании вроде про это нет.
     context = {'category_posts': category_slug}
     return render(request, template, context)
