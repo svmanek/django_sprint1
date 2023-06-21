@@ -12,7 +12,6 @@
           Дата: {{ post.date }}
         </li>
         <li>
-          <!--Тот самый вопрос по которому писал в личку (остальное всё исправил)-->
           Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
         </li>
       </ul>         
